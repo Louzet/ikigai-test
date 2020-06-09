@@ -1,7 +1,7 @@
-export UID = $(USER_ID)
-export GID = $(GROUP_ID)
+user := $(shell id -u)
+group := $(shell id -g)
 
-DOCKER_COMPOSE := docker-compose -f docker-compose.yml
+DOCKER_COMPOSE := USER_ID=$(user) GROUP_ID=$(group) docker-compose -f docker-compose.yml
 
 EXEC_DB        := $(DOCKER_COMPOSE) exec db mysql
 EXEC_PHP       := $(DOCKER_COMPOSE) exec php
@@ -15,7 +15,7 @@ help: ## Affiche cette aide
 
 .PHONY: start
 start:## Lance le serveur de développement
-	$(DOCKER_COMPOSE) up -d --remove-orphans
+	$(DOCKER_COMPOSE) up -d --remove-orphans --build
 
 
 .PHONY: down

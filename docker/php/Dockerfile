@@ -1,9 +1,11 @@
 FROM php:7.4-fpm
 
-WORKDIR /var/www
+WORKDIR /var/www/api
 
 # Set timezone
 ARG TIMEZONE
+ARG USER_ID
+ARG GROUP_ID
 
 RUN apt-get update && apt-get install -y \
       wget \
@@ -35,5 +37,12 @@ RUN printf '[PHP]\ndate.timezone = "%s"\n', ${TIMEZONE} > /usr/local/etc/php/con
 
 # Php.ini copy to config
 ADD php-ini-override.ini /etc/php/7.4/fpm/conf.d/php-ini-override.ini
+
+ARG USER_ID
+ARG GROUP_ID
+
+RUN groupadd -f --gid $GROUP_ID mickael
+RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID mickael
+USER mickael
 
 EXPOSE 9000
