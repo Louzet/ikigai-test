@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "api-platform/api-pack": "^1.2",
+        "doctrine/doctrine-migrations-bundle": "^2.1",
         "sensio/framework-extra-bundle": "^5.5",
         "symfony/console": "5.1.*",
         "symfony/dotenv": "5.1.*",
@@ -14,6 +15,7 @@
         "symfony/yaml": "5.1.*"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.3",
         "symfony/maker-bundle": "^1.19",
         "symfony/test-pack": "^1.0"
     },

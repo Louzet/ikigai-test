@@ -61,5 +61,12 @@ db: ## exec nginx in bash mode
 	$(info Make: Exec mysql db in bash mode.)
 	$(EXEC_DB) -u root -p
 
+.PHONY: php
 php: ## connect into the container
 	$(EXEC_PHP) bash
+
+seed:
+	${DOCKER_COMPOSE} exec php bin/console doctrine:migrations:migrate -q
+	${DOCKER_COMPOSE} exec php bin/console doctrine:schema:validate -q
+	${DOCKER_COMPOSE} exec php bin/console doctrine:fixtures:load -q
+
