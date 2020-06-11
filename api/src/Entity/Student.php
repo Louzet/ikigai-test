@@ -5,8 +5,11 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\StudentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * A student
+ *
  * @ApiResource()
  * @ORM\Entity(repositoryClass=StudentRepository::class)
  */
@@ -21,16 +24,20 @@ class Student
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Assert\NotBlank()
      */
     private string $lastname;
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Assert\NotBlank()
      */
     private string $firstname;
 
     /**
      * @ORM\Column(type="datetime_immutable")
+     * @Assert\Type(\DateTimeInterface::class)
+     * @Assert\NotNull()
      */
     private \DateTimeImmutable $birthdate;
 
