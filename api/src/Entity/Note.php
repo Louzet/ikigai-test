@@ -17,17 +17,17 @@ class Note
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $value;
+    private float $value;
 
     /**
      * @ORM\Column(type="string", length=128)
      */
-    private $course;
+    private string $course;
 
     public function getId(): ?int
     {
