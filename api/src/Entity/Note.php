@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\NoteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource()
@@ -21,11 +22,21 @@ class Note
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\Type("float")
+     * @Assert\NotNull()
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 20,
+     *      notInRangeMessage = "The value of the note must be between 0 and 20"
+     * )
      */
     private float $value;
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Assert\Type("string")
+     * @Assert\NotNull()
+     * @Assert\NotBlank()
      */
     private string $course;
 
