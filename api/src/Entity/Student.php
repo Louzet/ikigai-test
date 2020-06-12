@@ -4,11 +4,14 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\StudentRepository;
+use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * A student
@@ -16,6 +19,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiResource(
  *      normalizationContext={"groups"={"student:read"}}
  * )
+ * @ApiFilter(SearchFilter::class, properties={"lastname":"partial", "firstname":"partial", "birthdate":"exact"})
+ * @ApiFilter(OrderFilter::class, properties={"lastname", "firstname", "birthdate"})
+ * 
  * @ORM\Entity(repositoryClass=StudentRepository::class)
  */
 class Student
@@ -124,10 +130,6 @@ class Student
     {
         if ($this->notes->contains($note)) {
             $this->notes->removeElement($note);
-            // set the owning side to null (unless already changed)
-            if ($note->getStudent() === $this) {
-                $note->setStudent(null);
-            }
         }
 
         return $this;
