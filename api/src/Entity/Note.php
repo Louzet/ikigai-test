@@ -8,6 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * A Student's Note
+ * 
  * @ApiResource()
  * @ORM\Entity(repositoryClass=NoteRepository::class)
  */
@@ -40,6 +42,13 @@ class Note
      */
     private string $course;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Student::class, inversedBy="notes")
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank()
+     */
+    private Student $student;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -65,6 +74,18 @@ class Note
     public function setCourse(string $course): self
     {
         $this->course = $course;
+
+        return $this;
+    }
+
+    public function getStudent(): ?Student
+    {
+        return $this->student;
+    }
+
+    public function setStudent(Student $student): self
+    {
+        $this->student = $student;
 
         return $this;
     }

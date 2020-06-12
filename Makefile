@@ -21,7 +21,7 @@ start:## Lance le serveur de développement
 .PHONY: down
 down: ## destroy images and containers created
 	$(info Make: Destroy images and containers created.)
-	$(DOCKER_COMPOSE) down --remove-orphans --volumes
+	$(DOCKER_COMPOSE) down --remove-orphans
 
 restart: down start
 
@@ -67,6 +67,5 @@ php: ## connect into the container
 
 seed:
 	${DOCKER_COMPOSE} exec php bin/console doctrine:migrations:migrate -q
-	${DOCKER_COMPOSE} exec php bin/console doctrine:schema:validate -q
-	${DOCKER_COMPOSE} exec php bin/console doctrine:fixtures:load -q
+	${DOCKER_COMPOSE} exec php bin/console doctrine:schema:validate -q -v
 
