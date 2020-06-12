@@ -54,9 +54,9 @@ class Student
     /**
      * @Assert\Type(\DateTimeInterface::class, message="This date does not respect the format YYYY-MM-DD")
      * @Assert\NotNull()
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      * @Groups({"student:read"})
-     * @var \DateTimeImmutable|string
+     * @var \DateTimeInterface|string
      */
     private $birthdate;
 
@@ -100,7 +100,7 @@ class Student
         return $this;
     }
 
-    public function getBirthdate(): ?\DateTimeImmutable
+    public function getBirthdate(): ?\DateTimeInterface
     {
         return $this->birthdate;
     }
