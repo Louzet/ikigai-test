@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -17,7 +19,8 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  * A student
  *
  * @ApiResource(
- *      normalizationContext={"groups"={"student:read"}}
+ *      normalizationContext={"groups"={"student:read"}, "disable_type_enforcement"=true},
+ *      denormalizationContext={"disable_type_enforcement"=true}
  * )
  * @ApiFilter(SearchFilter::class, properties={"lastname":"partial", "firstname":"partial", "birthdate":"exact"})
  * @ApiFilter(OrderFilter::class, properties={"lastname", "firstname", "birthdate"})
@@ -49,12 +52,13 @@ class Student
     private string $firstname;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
-     * @Assert\Type(\DateTimeInterface::class)
+     * @Assert\Type(\DateTimeInterface::class, message="This date does not respect the format YYYY-MM-DD")
      * @Assert\NotNull()
+     * @ORM\Column(type="datetime_immutable")
      * @Groups({"student:read"})
+     * @var \DateTimeImmutable|string
      */
-    private \DateTimeImmutable $birthdate;
+    private $birthdate;
 
     /**
      * @ORM\OneToMany(targetEntity=Note::class, mappedBy="student")
@@ -101,7 +105,7 @@ class Student
         return $this->birthdate;
     }
 
-    public function setBirthdate(\DateTimeImmutable $birthdate): self
+    public function setBirthdate($birthdate): self
     {
         $this->birthdate = $birthdate;
 

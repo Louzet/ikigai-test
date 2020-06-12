@@ -7,3 +7,4 @@ api_platform:
         versions: [3]
     formats:
         json: ['application/json']
+        jsonld: ['application/ld+json']
