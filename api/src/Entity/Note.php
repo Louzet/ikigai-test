@@ -2,15 +2,18 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\NoteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\NoteRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * A Student's Note
  * 
- * @ApiResource()
+ * @ApiResource(
+ *      normalizationContext={"groups"={"note:read"}},
+ * )
  * @ORM\Entity(repositoryClass=NoteRepository::class)
  */
 class Note
@@ -31,6 +34,7 @@ class Note
      *      max = 20,
      *      notInRangeMessage = "The value of the note must be between 0 and 20"
      * )
+     * @Groups({"note:read", "student:read"})
      */
     private float $value;
 
@@ -39,6 +43,7 @@ class Note
      * @Assert\Type("string")
      * @Assert\NotNull()
      * @Assert\NotBlank()
+     * @Groups({"note:read", "student:read"})
      */
     private string $course;
 
@@ -46,6 +51,7 @@ class Note
      * @ORM\ManyToOne(targetEntity=Student::class, inversedBy="notes")
      * @ORM\JoinColumn(nullable=false)
      * @Assert\NotBlank()
+     * @Groups({"note:read"})
      */
     private Student $student;
 

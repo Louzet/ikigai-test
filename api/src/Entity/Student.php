@@ -40,14 +40,14 @@ class Student
     /**
      * @ORM\Column(type="string", length=128)
      * @Assert\NotBlank()
-     * @Groups({"student:read"})
+     * @Groups({"student:read", "note:read"})
      */
     private string $lastname;
 
     /**
      * @ORM\Column(type="string", length=128)
      * @Assert\NotBlank()
-     * @Groups({"student:read"})
+     * @Groups({"student:read", "note:read"})
      */
     private string $firstname;
 
@@ -55,7 +55,7 @@ class Student
      * @Assert\Type(\DateTimeInterface::class, message="This date does not respect the format YYYY-MM-DD")
      * @Assert\NotNull()
      * @ORM\Column(type="datetime")
-     * @Groups({"student:read"})
+     * @Groups({"student:read", "note:read"})
      * @var \DateTimeInterface|string
      */
     private $birthdate;
