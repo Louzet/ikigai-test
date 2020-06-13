@@ -1,0 +1,10 @@
+monolog:
+    handlers:
+        main:
+            type: stream
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+            action_level: error
+            handler: nested
+            channels: ["!event"]
+            max_files: 10
