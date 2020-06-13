@@ -1,0 +1,41 @@
+parameters:
+    courses:
+        - history
+        - geography
+        - french
+        - mathematical
+        - sport
+        - biology
+        - physical
+        - economy
+        - philosophy
+
+App\Entity\Student:
+    student_{1..10}:
+        lastname: <lastName()>
+        firstname: <firstName()>
+        birthdate: <dateTime()>
+
+App\Entity\Note:
+    mathematical_{1..10}:
+        value: '<randomFloat(2, 1, 20)>'
+        course: 'mathematical'
+        student: '@student_<current()>'
+    biology_{1..10}:
+        value: '<randomFloat(2, 1, 20)>'
+        course: 'biology'
+        student: '@student_<current()>'
+    physical_{1..10}:
+        value: '<randomFloat(2, 1, 20)>'
+        course: 'physical'
+        student: '@student_<current()>'
+    economy_{1..10}:
+        value: '<randomFloat(2, 1, 20)>'
+        course: 'economy'
+        student: '@student_<current()>'
+    sport_{1..10}:
+        value: '<randomFloat(2, 1, 20)>'
+        course: 'sport'
+        student: '@student_<current()>'
+
+        
