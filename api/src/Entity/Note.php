@@ -12,7 +12,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * A Student's Note
  * 
  * @ApiResource(
- *      normalizationContext={"groups"={"note:read"}},
+ *      attributes={
+ *          "pagination_items_per_page"=20,
+ *          "order"={"value":"asc"}
+ *      },
+ *      normalizationContext={"groups"={"note:read"}}
  * )
  * @ORM\Entity(repositoryClass=NoteRepository::class)
  */

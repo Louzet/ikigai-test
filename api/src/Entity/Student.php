@@ -19,6 +19,10 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  * A student
  *
  * @ApiResource(
+ *      attributes={
+ *          "pagination_items_per_page"=20,
+ *          "order"={"lastname":"asc"}
+ *      },
  *      normalizationContext={"groups"={"student:read"}, "disable_type_enforcement"=true},
  *      denormalizationContext={"disable_type_enforcement"=true},
  *      collectionOperations={
