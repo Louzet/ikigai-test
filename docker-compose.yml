@@ -32,12 +32,12 @@ services:
         ports:
             - 3307:3306
         volumes: 
-            - db-data:/var/lib/mysql
+            - ./db-data:/var/lib/mysql
         environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: ikigai_louzet
-            MYSQL_USER: louzet
-            MYSQL_PASSWORD: root
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
         restart: on-failure
     
     phpmyadmin:
@@ -51,9 +51,9 @@ services:
             - "3308:80"
         restart: on-failure
         environment: 
-            PMA_HOST: db
-            PMA_USER: louzet
-            PMA_PASSWORD: root
+            PMA_HOST: ${PMA_HOST}
+            PMA_USER: ${PMA_USER}
+            PMA_PASSWORD: ${PMA_PASSWORD}
 
 volumes:
-    db-data:
+    db-data: {}
