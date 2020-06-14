@@ -20,7 +20,29 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *
  * @ApiResource(
  *      normalizationContext={"groups"={"student:read"}, "disable_type_enforcement"=true},
- *      denormalizationContext={"disable_type_enforcement"=true}
+ *      denormalizationContext={"disable_type_enforcement"=true},
+ *      collectionOperations={
+ *          "get",
+ *          "post",
+ *          "students_average"={
+ *              "method"="GET",
+ *              "path"="/students/average",
+ *              "controller"=App\Controller\Api\GetAllStudentsAverage::class,
+ *              "read"=false
+ *          },
+ *          "students_average_general"={
+ *              "method"="GET",
+ *              "path"="/students/average-general",
+ *              "controller"=App\Controller\Api\GetAverageGeneral::class,
+ *              "read"=false
+ *          }
+ *      },
+ *      itemOperations={
+ *          "get",
+ *          "delete",
+ *          "put",
+ *          "student_average"={"method"="GET", "path"="/students/{id}/average", "controller"=App\Controller\Api\GetStudentAverage::class, "read"=false}
+ *      }
  * )
  * @ApiFilter(SearchFilter::class, properties={"lastname":"partial", "firstname":"partial", "birthdate":"exact"})
  * @ApiFilter(OrderFilter::class, properties={"lastname", "firstname", "birthdate"})
