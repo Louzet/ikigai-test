@@ -61,7 +61,7 @@ class Student
     private $birthdate;
 
     /**
-     * @ORM\OneToMany(targetEntity=Note::class, mappedBy="student")
+     * @ORM\OneToMany(targetEntity=Note::class, mappedBy="student", cascade={"remove"})
      * @Groups({"student:read"})
      */
     private $notes;
