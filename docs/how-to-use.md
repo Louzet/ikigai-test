@@ -32,104 +32,53 @@ $ docker-compose exec php php bin/console debug:router --env=prod
 ```
 
 #### Test API
-To test our api endpoints, we'll use tools like **postman**(https://www.postman.com/downloads/) or **insomnia**(https://insomnia.rest/download/)
+To test our api endpoints, we'll use tools like <br /> **postman**(https://www.postman.com/downloads/) <br />or <br />**insomnia**(https://insomnia.rest/download/)
 
 #### Students
 =========
 
 * ##### get students
-    **description:** Retrieve all registered students
-    **path:** http://localhost:8000/api/students
-    **method:** GET
-    **body:** {}
+    **description:** Retrieve all registered students<br />**path:** http://localhost:8000/api/students<br />**method:** GET<br />**body:** {}
 
 * ##### post students
-    **description:** Allow to create a new student
-    **path:** http://localhost:8000/api/students
-    **method:** POST
-    **body:** {
-        'lastname' : 'hugo',
-        'firstname': 'valentin',
-        'birthdate': '2008-08-04'
-    }
+    **description:** Allow to create a new student<br />**path:** http://localhost:8000/api/students<br />**method:** POST<br />**body:** {<br />&nbsp;&nbsp;&nbsp;&nbsp;'lastname' : 'hugo',<br />&nbsp;&nbsp;&nbsp;&nbsp;'firstname': 'valentin',<br />&nbsp;&nbsp;&nbsp;&nbsp;'birthdate': '2008-08-04'<br />}
 
 * ##### get student
-    **description:** get a particular student
-    **path:** http://localhost:8000/api/students/{id}
-    **method:** GET
-    **body:** {}
+    **description:** get a particular student<br /> **path:** http://localhost:8000/api/students/{id}<br /> **method:** GET<br /> **body:** {}
 
 * ##### delete student
-    **description:** delete all informations about a particular student
-    **path:** http://localhost:8000/api/students/{id}
-    **method:** DELETE
-    **body:** {}
+    **description:** delete all informations about a particular student<br />**path:** http://localhost:8000/api/students/{id}<br />**method:** DELETE<br />**body:** {}
 
 
 * ##### modify student
-    **description:** update informations about a particular student
-    **path:** http://localhost:8000/api/students/{id}
-    **method:** PUT
-    **body:** {
-        'birthdate': '2005-07-14'
-    }
+    **description:** update informations about a particular student<br />**path:** http://localhost:8000/api/students/{id}<br />**method:** PUT<br />**body:** {<br />&nbsp;&nbsp;&nbsp;&nbsp;'birthdate': '2005-07-14'<br />}
 
 #### Notes
 ======
 
 * ##### get students
-    **description:** Collect all notes from all students
-    **path:** http://localhost:8000/api/notes
-    **method:** GET
-    **body:** {}
+    **description:** Collect all notes from all students<br />**path:** http://localhost:8000/api/notes<br />**method:** GET<br />**body:** {}
 
 * ##### post notes
-    **description:** add a new note to a single student
-    **path:** http://localhost:8000/api/notes
-    **method:** POST
-    **body:** {
-        'value': 18,
-        'course': 'politics',
-        'student': '/api/students/{id}
-    }
+    **description:** add a new note to a single student<br />**path:** http://localhost:8000/api/notes<br />**method:** POST<br />**body:** {<br />&nbsp;&nbsp;&nbsp;&nbsp;'value': 18,<br />&nbsp;&nbsp;&nbsp;&nbsp;'course': 'politics',<br />&nbsp;&nbsp;&nbsp;&nbsp;'student': '/api/students/{id}<br />}
 
 * ##### get note
-    **description:** get a note, the course and the associated student
-    **path:** http://localhost:8000/api/notes/{id}
-    **method:** GET
-    **body:** {}
+    **description:** get a note, the course and the associated student<br />**path:** http://localhost:8000/api/notes/{id}<br />**method:** GET<br />**body:** {}
 
 * ##### delete note
-    **description:** delete a note associated to a student
-    **path:** http://localhost:8000/api/students/{id}
-    **method:** DELETE
-    **body:** {}
+    **description:** delete a note associated to a student<br />**path:** http://localhost:8000/api/students/{id}<br />**method:** DELETE<br />**body:** {}
 
 * ##### modify note
-    **description:** update note about a particular student
-    **path:** http://localhost:8000/api/notes/{id}
-    **method:** PUT
-    **body:** {
-        'value': 17.5
-    }
+    **description:** update note about a particular student<br />**path:** http://localhost:8000/api/notes/{id}<br />**method:** PUT<br />**body:** {<br />&nbsp;&nbsp;&nbsp;&nbsp;'value': 17.5<br />}
 
 #### Average
 ======
 
 * ##### get averages
-    **description:** get the general average from all students
-    **path:** http://localhost:8000/api/students/average
-    **method:** GET
-    **body:** {}
+    **description:** get the general average from all students<br />**path:** http://localhost:8000/api/students/average<br />**method:** GET<br />**body:** {}
 
 * ##### get average
-    **description:** get the general average from single student
-    **path:** http://localhost:8000/api/students/{id}/average
-    **method:** GET
-    **body:** {}
+    **description:** get the general average from single student<br />**path:** http://localhost:8000/api/students/{id}/average<br />**method:** GET<br />**body:** {}
 
 * ##### get the general average of the class
-    **description:** get the general average from all students
-    **path:** http://localhost:8000/api/students/average-general
-    **method:** GET
-    **body:** {}
+    **description:** get the general average from all students<br />**path:** http://localhost:8000/api/students/average-general<br />**method:** GET<br />**body:** {}
